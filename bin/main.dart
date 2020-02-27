@@ -2,6 +2,7 @@
 
 void main() {
   List<int> a = [1,2,4,9];
+  // ignore: omit_local_variable_types
   List<int> b = [5,6,8,9,9,10,11];
   print(mergeList(a, b));
 //  print(mergeList2(a, b));
@@ -24,19 +25,29 @@ List<int> mergeList(List<int> a, List<int> b){
   //---------
   // ignore: omit_local_variable_types
   for(int i=0;i<big.length;i++){
-    if(big[i]>small[0]){
-      print("value of i:$i element ${big[i]}");
+    if(big[i]>=small[0]){
+      if(small.length==1){
+        big.insertAll(i, small);
+        small=[];
+        return big;
+      }
+//      print('value of i:$i element ${big[i]}');
       //add that element from small list of big list
       // ignore: omit_local_variable_types
       int upto = getHigherElementIndex(big[i], small);
-      print('sublist to insert at ${i-1} list:${small.sublist(0,upto+1)}');
+//      print('sublist to insert at ${i-1} list:${small.sublist(0,upto)}');
       big.insertAll(i,small.sublist(0,upto));
-      print('upto:$upto');
       small=small.sublist(upto);
+
+//      print('upto:$upto');
+
       if(small.isEmpty){
         return big;
       }
+
     }
+//    print('big list is $big');
+//    print('small list is $small');
   }
 return big;
 }
