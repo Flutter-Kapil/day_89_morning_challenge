@@ -2,7 +2,7 @@
 
 void main() {
   List<int> a = [1,2,4,9];
-  List<int> b = [5,6,8];
+  List<int> b = [5,6,8,9,9,10,11];
   print(mergeList(a, b));
 //  print(mergeList2(a, b));
 }
@@ -30,9 +30,9 @@ List<int> mergeList(List<int> a, List<int> b){
       // ignore: omit_local_variable_types
       int upto = getHigherElementIndex(big[i], small);
       print('sublist to insert at ${i-1} list:${small.sublist(0,upto+1)}');
-      big.insertAll(i,small.sublist(0,upto+1));
+      big.insertAll(i,small.sublist(0,upto));
       print('upto:$upto');
-      small=small.sublist(upto+1);
+      small=small.sublist(upto);
       if(small.isEmpty){
         return big;
       }
